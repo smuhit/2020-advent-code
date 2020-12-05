@@ -32,6 +32,7 @@ for seat in seats:
 
 print('Max Id', max(ids))
 
+# Part 2
 min_id = min(ids)
 max_id = max(ids)
 
