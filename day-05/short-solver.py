@@ -5,7 +5,4 @@ data = set([int(x.replace('F', '0').replace('L', '0').replace('B', '1').replace(
 
 print('Part 1', max(data))
 
-for x in range(min(data), max(data)):
-    if x not in data:
-        print('Part 2', x)
-        break
+print('Part 2', (set(list(range(min(data), max(data) + 1))) - data).pop())
