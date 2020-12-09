@@ -2,7 +2,7 @@ data = [int(x) for x in open('input.txt').read().split()]
 
 # Part 1
 
-preamble_length = 5
+preamble_length = 25
 
 def test_in_preamble(idx):
     test = data[idx]
