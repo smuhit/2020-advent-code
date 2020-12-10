@@ -5,4 +5,4 @@ data = set([int(x.translate(str.maketrans('FBLR', '0101')), base=2)
 
 print('Part 1', max(data))
 
-print('Part 2', (set(list(range(min(data), max(data) + 1))) - data).pop())
+print('Part 2', (set(range(min(data), max(data) + 1)) - data).pop())
