@@ -21,23 +21,18 @@ print('Jolt calculation', jolt_differences[1] * jolt_differences[3])
 # Part 2
 
 set_data = set(data)
-set_data.add(max(set_data) + 3  )
 
 cache_value = {}
 
 def find_arrangments(val):
     if val in cache_value:
         return cache_value[val]
-    possibilites = [val + 1, val + 2, val + 3]
-    actual = []
     downstream = 0
-    for possibility in possibilites:
+    for possibility in (val + 1, val + 2, val + 3):
         if possibility in set_data:
-            actual.append(possibility)
             downstream += find_arrangments(possibility)
-    if not actual:
-        cache_value[val] = 1
-        return 1
+    if downstream == 0:
+        downstream = 1
     cache_value[val] = downstream
     return downstream
 
