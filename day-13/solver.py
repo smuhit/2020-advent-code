@@ -29,7 +29,7 @@ remainders = [x - (idx % x or x) for x, idx in bus_offset]
 def extended_euclid(x, y):
     x0, x1, y0, y1 = 1, 0, 0, 1
     while y > 0:
-        q, x, y = math.floor(x / y), y, x % y
+        q, x, y = x // y, y, x % y
         x0, x1 = x1, x0 - q * x1
         y0, y1 = y1, y0 - q * y1
     return x0, y0
@@ -40,12 +40,12 @@ def invmod(a, m):
 
 def chinese_remainder_gauss(n, a):
     result = 0
-    N = math.prod(n)
+    product = math.prod(n)
     for i in range(len(n)):
         ai = a[i]
         ni = n[i]
-        bi = N // ni
+        bi = product // ni
         result += ai * bi * invmod(bi, ni)
-    return result % N
+    return result % product
 
 print(chinese_remainder_gauss(vals, remainders))
