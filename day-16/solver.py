@@ -53,7 +53,7 @@ ticket_lines = [line for line in ticket_lines if set(line) - invalid_tickets == 
 tickets_to_check = ticket_lines.copy()
 tickets_to_check.insert(0, parsed_data['your ticket'])
 
-to_remove = {k: [] for k in range(num_fields)}
+to_remove = {k: set() for k in range(num_fields)}
 for idx, potential_fields in enumerate(field_arbiter):
     for ticket_line in tickets_to_check:
         for field in potential_fields:
@@ -63,7 +63,7 @@ for idx, potential_fields in enumerate(field_arbiter):
                     remove = False
                     break
             if remove:
-                to_remove[idx].append(field)
+                to_remove[idx].add(field)
 
 for idx in to_remove:
     for field in to_remove[idx]:
